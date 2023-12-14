@@ -21,7 +21,6 @@ import os
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'papers.settings')
 django.setup()
 from backend.models import ArxivPaper, Author, Subject, PaperImage, PaperSource
-print(f'Found {len(settings.INTERESTING_DOMAINS)} domains of interest')
 
 
 def extract_tar_gz(file_path: str, output_dir: str) -> None:
@@ -328,11 +327,6 @@ def scrape_paper(arxiv_id, google_scholar=False):
                 scolar_id = first_author_result['scholar_id']
                 citations = first_author_result['citedby']
 
-                for interesting_domain in settings.INTERESTING_DOMAINS:
-                    if interesting_domain in email_domain:
-                        interesting_paper = True
-                        print(f'[{arxiv_id}] Interesting paper: {email_domain} email domain')
-                        break
                 author = Author.objects.create(name=author_name, affiliation=affiliation, email_domain=email_domain,
                                                scholar_id=scolar_id, citations=citations)
                 print(f'[{arxiv_id}] Author created: {author} [affiliation: {affiliation}, email_domain: {email_domain}, citations: {citations}]')
@@ -348,13 +342,6 @@ def scrape_paper(arxiv_id, google_scholar=False):
         elif not author:
             author = Author.objects.create(name=author_name)
             print(f'[{arxiv_id}] Author created: {author}, no GS lookup')
-        elif author.email_domain:
-            email_domain = author.email_domain
-            for interesting_domain in settings.INTERESTING_DOMAINS:
-                if interesting_domain in email_domain:
-                    interesting_paper = True
-                    print(f'[{arxiv_id}] Interesting paper: {email_domain} email domain')
-                    break
         total_author_citations += author.citations
         paper.authors.add(author)
 
