@@ -17,8 +17,16 @@ Together we can make an amazing and free arxiv front-end!
 2. `source venv/bin/activate`
 3. `pip install -r requirements.txt`
 4. `python manage.py migrate`
-5. Edit `.env.example` if you would like to summarize papers yourself
-6. `python manage.py runserver`
+5. `cp .env.example .env`
+
+## Running
+To run the web server, run:
+- `python manage.py runserver`
+
+To scrape papers, run:
+- `python scrape_abs.py`
+
+Note that an OpenAI API key is required in `.env` to summarize papers.
 
 
 ## Production
