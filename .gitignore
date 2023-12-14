@@ -1,0 +1,81 @@
+# Django specific files and directories
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+*.db.sqlite3
+*.sqlite3
+*.log
+*.pot
+*.pyc
+*.swp
+*.swo
+
+# Virtual environment
+venv/
+env/
+*.env
+
+# Development and runtime files
+*.pyc
+*.pyo
+*.db.sqlite3
+*.sqlite3
+*.log
+*.pot
+*.pyc
+*.swp
+*.swo
+
+# IDE and editor-specific files
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+*.iml
+
+# Compiled files
+*.pyc
+*.pyo
+*.pyd
+
+# Temporary files
+*.swp
+*.swo
+*~
+*.lock
+
+# Media files (if not using a CDN)
+/media/
+/static/
+
+# Ignore database configuration files
+*.db
+
+# Ignore pipenv and poetry virtual environments
+Pipfile.lock
+poetry.lock
+
+# Ignore local settings
+local_settings.py
+
+# Ignore sensitive or secret configuration files
+*.secret
+*.key
+
+# Ignore migration files (you may not want to ignore these in all cases)
+# Comment out the following line if you want to keep migrations in version control
+# /<app_name>/migrations/
+
+# Ignore API keys, tokens, and other secrets
+# Add your own secret files or patterns here
+
+# Ignore generated HTML documentation
+/_build/
+
+# Ignore macOS Finder files
+.DS_Store
+
+# Ignore system and text editor backup files
+*.swp
+*~
