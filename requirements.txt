@@ -1,0 +1,13 @@
+django
+uwsgi
+httpx
+requests
+scholarly
+python-decouple==3.6
+django-extensions
+requests
+beautifulsoup4
+Pillow
+psycopg2
+PyMuPDF
+openai

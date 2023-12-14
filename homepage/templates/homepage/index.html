@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Papers.day: A daily summary of the latest arxiv papers.">
+    <meta name="keywords" content='arxiv, machine learning, ai, artificial intelligence, papers'>
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Papers.Day">
+    <meta name="twitter:description" content="A daily summary of the latest arxiv papers.">
+    <meta name="description" content="A daily summary of the latest arxiv papers.">
+    <meta name="twitter:image" content="https://papers.day/static/favicon.png">
+    <meta property="og:image" content="/static/favicon.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Papers">
+    <meta name="apple-mobile-web-app-banner" content="yes">
+    <link rel="icon" type="image/png" href="/static/favicon-64.png">
+    <link rel="apple-touch-icon" href="/static/favicon-apple-touch.png">
+
+    <title>papers.day: AI papers made easy</title>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/6.9.96/css/materialdesignicons.min.css" integrity="sha512-8G2pIpgpIJsq+hXzWgiRCQ1q++YBWoPwTvWS7WqZh9QhCOPzzC6nQC/ZYep1g6H3D2pnlm9yXl5BtyI+c6Whog==" crossorigin="anonymous" referrerpolicy="no-referrer">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" integrity="sha512-t4GWSVZO1eC8BM339Xd7Uphw5s17a86tIZIj8qRxhnKub6WoyhnrxeCIMeAqBPgdZGlCcG2PrZjMc+Wr78+5Xg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+      <link href="{% static 'css/main.css' %}?v=1" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.min.js" integrity="sha512-3dZ9wIrMMij8rOH7X3kLfXAzwtcHpuYpEgQg1OA4QAob1e81H8ntUQmQm3pBudqIoySO5j0tHN4ENzA6+n2r4w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      <script src="{% static 'js/main.js' %}?v=1"></script>
+      <script defer data-domain="papers.day" src="https://plausible.io/js/script.js"></script>
+  </head>
+  <body class="p-4">
+      <div class="text-center">
+        <a href="/" class="page-title"><span class="mdi mdi-book-open-page-variant"></span> papers.day</a>
+        <div class="search-box mt-4">
+          <div class="search-input-wrapper">
+            <input type="text" id="search-input" class="search-input" placeholder="Search papers...">
+            <button id="reset-btn" class="btn btn-select" type="button"><span class="mdi mdi-close"></span></button>
+          </div>
+        </div>
+        <div class="btn-group mb-2" id="selection-buttons" role="group" aria-label="Selection">
+          <button type="button" class="btn btn-sm btn-select" data-value="today">
+            <span class="mdi mdi-calendar-today-outline"></span>
+            Today
+          </button>
+          <button type="button" class="btn btn-sm btn-select" data-value="this-week">
+            <span class="mdi mdi-calendar-week-outline"></span>
+            Week
+          </button>
+          <button type="button" class="btn btn-sm btn-select active" data-value="this-month">
+            <span class="mdi mdi-calendar-month-outline"></span>
+            Month
+          </button>
+          <button type="button" class="btn btn-sm btn-select" data-value="this-year">
+            <span class="mdi mdi-calendar-multiple"></span>
+            Year
+          </button>
+          <button type="button" class="btn btn-sm btn-select" data-value="forever">
+            <span class="mdi mdi-calendar-star-outline"></span>
+            All
+          </button>
+        </div>
+      </div>
+      <div class="text-center">
+        <a href="https://twitter.com/nearcyan" class="linky" target="_blank"><span class="mdi mdi-twitter"></span> feedback</a>
+      </div>
+      <div class="flex-container" id="papers-container">
+      </div>
+  </body>
+</html>
+
