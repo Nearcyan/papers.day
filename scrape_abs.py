@@ -3,7 +3,7 @@ import shutil
 import tempfile
 import django
 import fitz
-import openai
+from openai import OpenAI
 import random
 import requests
 import re
@@ -113,10 +113,13 @@ def get_paper_summary_from_abstract(abstract: str) -> str:
     :param abstract: The abstract of the paper
     :return: The summary of the paper
     """
-    openai.api_key = settings.OPENAI_API_KEY
+    
+    client = OpenAI()
+    client.api_key = settings.OPENAI_API_KEY
+
     prompt = f"Summarize the following AI paper abstract in two sentences:\nAbstract: {abstract}\nSummary:"
-    response = openai.Completion.create(
-        engine="text-davinci-003",
+    response = client.completions.create(
+        model="text-davinci-003",
         prompt=prompt,
         temperature=0.9,
         max_tokens=512,
@@ -296,6 +299,7 @@ def scrape_paper(arxiv_id, google_scholar=False):
         paper.summary = summary
         paper.save()
     except Exception as e:
+        print(f"Exception while generating completion: {e}")
         paper.delete()
         return None
 
